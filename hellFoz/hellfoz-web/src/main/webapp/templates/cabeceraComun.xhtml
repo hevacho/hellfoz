@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:pe="http://primefaces.org/ui/extensions"
+	  >
+
+        <ui:composition>
+ 			 
+ 			 <div class="centerAndBorder">
+ 			 			<div class="floatLeft separacionSuperior13">
+ 			 				<img src="#{request.contextPath}/images/hellfoztitle.png" alt="imagen no encontrada"/>
+ 			 			</div>
+ 			 			
+ 			 			<div class="floatLeft" style="width: 10px; padding-left: 5px;">
+ 			 				""
+ 			 			</div>
+ 			 		
+ 			 		<div class="floatLeft cajaNegraPeq">
+ 			 			
+ 			 				<h:outputText value="#{msg['cabecera.siguenos']}" styleClass="textoNegrita separacionSuperior" />
+ 			 			
+ 			 				<!-- Enlaces a los canales -->
+	 			 			<div style="padding-top:10px;">
+		 			 			<a class="sinUnderline" href="https://www.facebook.com/hellfozfestival" target="_blank">
+		 			 				<img src="#{request.contextPath}/images/iconoFace.png" alt="iconoFace" /> 
+		 			 			</a>
+		 			 			
+		 			 			<a class="sinUnderline" href="https://instagram.com/hellfoz" target="_blank">
+									<img src="#{request.contextPath}/images/iconoInstagram.png" alt="iconoInstagram" />
+								</a>
+								
+								<a class="sinUnderline" href="https://www.youtube.com/channel/UC5hKXYLH3zUBKW1DvEUR8Nw" target="_blank">
+									<img src="#{request.contextPath}/images/iconoYoutube.png" alt="iconoYoutube" />
+								</a>
+								
+								<a class="sinUnderline" href="https://twitter.com/FestivalHellfoz?s=08" target="_blank">
+									<img src="#{request.contextPath}/images/twitter.png" alt="iconoYoutube" />
+								</a>
+								
+							</div>
+						
+				  </div>
+				  
+				  <div class="floatLeft" style="width: 10px; padding-left: 5px;">
+ 			 				""
+ 			 			</div>
+				  
+				  <h:form>
+					  <div class="floatLeft cajaNegraPeq" style="width: 130px;">
+					  		<h:outputText value="Tiempo" styleClass="textoNegrita separacionSuperior" />
+					  		<br/><br/>
+							<pe:timer timeout="#{tiempoConciertoBean.tiempoConcierto}" singleRun="false"/>
+				
+					 </div>
+				 </h:form>		
+				</div>
+			
+			<div class="clear">
+				<br/>
+			</div>
+				
+ 			
+	    </ui:composition>
+	
+    
+</html>

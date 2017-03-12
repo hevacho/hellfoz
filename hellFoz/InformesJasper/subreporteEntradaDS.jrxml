@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporteEntradaDS" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fcff9fe2-80b3-4c3c-a94b-c063b5e513d2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="nif" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<image scaleImage="FillFrame" isUsingCache="false">
+				<reportElement x="14" y="17" width="524" height="172" uuid="4900a04b-cd30-49aa-b757-fd8adafc91e2"/>
+				<imageExpression><![CDATA["hellfoztitle.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="25" y="31" width="128" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="17d290ff-08e3-4d92-b3aa-24c021e71441"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="495" y="31" width="35" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="545bc575-6132-426a-b87f-c5b1a1bde4b0"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="25" y="95" width="128" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="353327e1-e4fd-4e34-bcf6-fa4fef4d4bb5"/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="307" y="142" width="223" height="39" forecolor="#FFFFFF" backcolor="#000000" uuid="8593afe1-3a9d-4a89-b9ce-6bc7c906d75b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="25" y="62" width="128" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="e76beb2e-473e-4754-a516-92d58e210782"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="14" y="200" width="524" height="1" uuid="3dff741a-df1f-4b2f-9f4a-7b14cb607b3c"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

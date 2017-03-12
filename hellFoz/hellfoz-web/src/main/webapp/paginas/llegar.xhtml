@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	>
+
+
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+			<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<!-- titulo -->
+			<h:outputText value="#{msg['llegar.titulo']}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+				<p:gmap center="#{mapaBean.mapa.coordenadas}" zoom="#{mapaBean.mapa.zoom}" type="HYBRID" style="width:90%;height:500px; margin:0 auto" model="#{mapaBean.simpleModel}" />
+				
+				<div class="clear">&nbsp;</div>
+				
+				<div class="center textoNormal">
+					
+					<h:outputText value="#{msg['llegar.introduccion']}"/>
+					<div class="clear">&nbsp;</div>
+					
+					
+					<!-- parrafo llegar en coche -->
+					<h:outputText value="#{msg['llegar.coche']}" styleClass="tituloTransportes"/>
+					<br/><br/>
+					<h:outputText value="#{msg['llegar.textoCoche']}"/>
+					&nbsp;
+					<p:link href="https://www.google.es/maps/dir//Foz,+Lugo/@42.927473,-4.2289629,600604m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0xd32270fc9302e27:0x404f58273cad420!2m2!1d-7.2580754!2d43.5695145" value="#{msg['llegar.enlace']}" target="_blank" style="font-weight: normal"/>
+					
+					<div class="clear">&nbsp;</div>
+					
+					
+					<!-- parrafo llegar en autobus -->
+					<h:outputText value="#{msg['llegar.autobus']}" styleClass="tituloTransportes"/>
+					<br/><br/>
+					<h:outputText value="#{msg['llegar.textoAutobus']}"/>
+					&nbsp;
+					<p:link href="http://www.arriva.es/#home" value="#{msg['llegar.enlace']}" target="_blank" style="font-weight: normal"/>
+					
+					<div class="clear">&nbsp;</div>
+					
+					
+					<!-- parrafo llegar en tren -->
+					<h:outputText value="#{msg['llegar.tren']}" styleClass="tituloTransportes"/>
+					<br/><br/>
+					<h:outputText value="#{msg['llegar.textoTren']}"/>
+					&nbsp;
+					<p:link href="http://www.feve.es" value="#{msg['llegar.enlace']}" target="_blank" style="font-weight: normal"/>
+					
+				</div>
+				
+		
+			
+			</h:form>
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+				<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+		
+			<!-- titulo -->
+			<h:outputText value="#{msg['compras.titulo']}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+			
+			
+			<!-- Establecimientos -->
+			
+			<p:tabView orientation="left" style="background:transparent !important; border:none">
+				
+		        <!-- bares -->
+		        <p:tab title="#{msg['compras.bares']}" >
+		        	<h:outputText value="#{msg['compras.sinBares']}" rendered="#{empty establecimientoBean.establecimientosTotal or empty establecimientoBean.establecimientosTotal.bares}" styleClass="separacion20 sinDatos"/>
+		            <ui:repeat var="establecimiento" value="#{establecimientoBean.establecimientosTotal.bares}" rendered="#{not empty establecimientoBean.establecimientosTotal and not empty establecimientoBean.establecimientosTotal.bares}">
+		            	<p:fieldset legend="#{establecimiento.nombre}">
+		            		<h:outputText value="#{establecimiento.texto}" escape="false"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.url}" value="#{establecimiento.url}" rendered="#{not empty establecimiento.url}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.googleMapsUrl}" value="#{msg['compras.googleMaps']}" rendered="#{not empty establecimiento.googleMapsUrl}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		
+		            	</p:fieldset>
+		            	
+		            	<div class="clear">
+							&nbsp;
+						</div>
+		            	
+		            </ui:repeat>
+		            
+		            
+		        </p:tab>
+		        
+		        <!-- HOTELES -->
+				<p:tab title="#{msg['compras.hoteles']}" >
+		        	<h:outputText value="#{msg['compras.sinHoteles']}" rendered="#{empty establecimientoBean.establecimientosTotal or empty establecimientoBean.establecimientosTotal.hoteles}" styleClass="separacion20 sinDatos"/>
+		            <ui:repeat var="establecimiento" value="#{establecimientoBean.establecimientosTotal.hoteles}" rendered="#{not empty establecimientoBean.establecimientosTotal and not empty establecimientoBean.establecimientosTotal.hoteles}">
+		            	<p:fieldset legend="#{establecimiento.nombre}">
+		            		<h:outputText value="#{establecimiento.texto}" escape="false"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.url}" value="#{establecimiento.url}" rendered="#{not empty establecimiento.url}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.googleMapsUrl}" value="#{msg['compras.googleMaps']}" rendered="#{not empty establecimiento.googleMapsUrl}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		
+		            	</p:fieldset>
+		            	
+		            	<div class="clear">
+							&nbsp;
+						</div>
+		            	
+		            </ui:repeat>
+		        </p:tab>
+		        
+		        <!-- supermercados -->
+		        <p:tab title="#{msg['compras.supermercados']}">
+		        	<h:outputText value="#{msg['compras.sinSupermercados']}" rendered="#{empty establecimientoBean.establecimientosTotal or empty establecimientoBean.establecimientosTotal.supermercados}" styleClass="separacion20 sinDatos"/>
+		             
+		            <ui:repeat var="establecimiento" value="#{establecimientoBean.establecimientosTotal.bares}" rendered="#{not empty establecimientoBean.establecimientosTotal and not empty establecimientoBean.establecimientosTotal.supermercados}">
+		            	<p:fieldset legend="#{establecimiento.nombre}">
+		            		<h:outputText value="#{establecimiento.texto}" escape="false"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.url}" value="#{establecimiento.url}" rendered="#{not empty establecimiento.url}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.googleMapsUrl}" value="#{msg['compras.googleMaps']}" rendered="#{not empty establecimiento.googleMapsUrl}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		
+		            	</p:fieldset>
+		            	
+		            	<div class="clear">
+							&nbsp;
+						</div>
+		            	
+		            </ui:repeat>
+		        </p:tab>
+		        
+		        <!-- tiendas otros -->
+		         <p:tab title="#{msg['compras.tiendas']}">
+		        	<h:outputText value="#{msg['compras.sinTiendas']}" rendered="#{empty establecimientoBean.establecimientosTotal or empty establecimientoBean.establecimientosTotal.tiendas}" styleClass="separacion20 sinDatos"/>
+		            
+		            <ui:repeat var="establecimiento" value="#{establecimientoBean.establecimientosTotal.tiendas}" rendered="#{not empty establecimientoBean.establecimientosTotal and not empty establecimientoBean.establecimientosTotal.tiendas}">
+		            	<p:fieldset legend="#{establecimiento.nombre}">
+		            		<h:outputText value="#{establecimiento.texto}" escape="false"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.url}" value="#{establecimiento.url}" rendered="#{not empty establecimiento.url}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		<br/>
+		            		<p:link href="#{establecimiento.googleMapsUrl}" value="#{msg['compras.googleMaps']}" rendered="#{not empty establecimiento.googleMapsUrl}" target="_blank" styleClass="linkFondoOscuro"/>
+		            		
+		            	</p:fieldset>
+		            	
+		            	<div class="clear">
+							&nbsp;
+						</div>
+		            </ui:repeat>
+		            
+		        </p:tab>
+		        
+		        
+		    </p:tabView>
+			
+			
+			
+			</h:form>
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

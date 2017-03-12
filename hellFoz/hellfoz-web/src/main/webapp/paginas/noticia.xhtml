@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		<!-- titulo -->
+			<div class="floatLeft separacionSuperior">
+				<h:outputText value="#{unaNoticiaBean.noticia.titulo}" styleClass="tituloPaginas"/>
+			</div>
+			
+			<div class="clear">
+			&nbsp;
+			<br/><br/>
+			</div>
+			
+			
+		<!-- imagen -->
+		<div class="floatLeft separacionSuperior">
+				<p:graphicImage value="#{imageStreamer.image}" cache="false" rendered="#{not empty unaNoticiaBean.noticia.fotoGrande}" styleClass="imagenNoticia">
+						<f:param name="id" value="#{'grd'.concat(unaNoticiaBean.noticia.fotoGrande.idImagen)}" />
+				</p:graphicImage>
+		</div>
+		
+		
+		<div class="clear">&nbsp;</div>
+		
+		<!-- cuerpoNoticia -->
+		<div class="floatLeft separacion20">
+			<h:outputText value="#{unaNoticiaBean.noticia.texto}" escape="false"/>
+		</div>
+
+		<div class="clear">&nbsp;</div>
+		
+		<div class="separacionSuperior centerButton " >
+			<p:commandLink value="#{msg['unaNoticia.volverBusqueda']}" actionListener="#{unaNoticiaBean.volverBusqueda()}" style="font-size:18px;"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<p:link href="#{unaNoticiaBean.noticia.enlace}" value="#{msg['unaNoticia.irAlSitio']}" rendered="#{not empty unaNoticiaBean.noticia.enlace}" target="_blank" style="font-size:18px;"/>
+		</div>
+		
+		<div class="clear">&nbsp;</div>
+		
+		
+	</ui:define>
+</ui:composition>
+
+</html>

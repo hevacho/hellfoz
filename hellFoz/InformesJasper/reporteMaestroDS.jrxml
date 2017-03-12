@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteMaestroDS" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c50df7a9-7325-4de3-b9b7-fd7f97bf492b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\hevacho\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="nPedido" class="java.lang.Integer"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="entradasDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="precioTotal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="555" height="20" uuid="a4d6e2f4-27d1-4272-b376-a81a0a0a1415"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista Entradas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="554" height="40" uuid="a63f42f2-f4ce-4053-a533-7e1c04519aea"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="69" y="0" width="100" height="20" uuid="3846027f-43c5-41b6-b971-7eadebe66203"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nPedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="0" width="100" height="20" uuid="1efaaeeb-ebd2-4339-92b2-ee096c214a7f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="469" y="0" width="86" height="20" uuid="c982781f-fd59-4d66-a829-d723c5ed7491"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{precioTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="0" width="65" height="20" uuid="c589cbc9-a0d5-43a6-92bc-9c3020a25f66"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Pedido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="40" height="20" uuid="ea0c0140-ae15-44da-8d74-b9753742d91f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="51" height="20" uuid="7d28e98a-3176-494d-95e1-8c536b087688"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="143" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="11" width="555" height="116" uuid="01d251f4-2afc-4747-8dc7-99bf9df04f36"/>
+				<dataSourceExpression><![CDATA[$F{entradasDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["subreporteEntradaDS.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="100" height="20" uuid="ff45de57-bbae-4379-ba37-528aabe1e5a9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aviso Legal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="20" width="554" height="44" uuid="513aee65-6d0a-45b8-a22b-71393a745398"/>
+				<textElement markup="html"/>
+				<text><![CDATA[La posesión de esta entrada da derecho a la entrada del recinto donde se celebra el espectáculo. Para ello es <br/> necesario presentar este justificante asi como el DNI. <br/> La organización se reserva el derecho de admisión. .....]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

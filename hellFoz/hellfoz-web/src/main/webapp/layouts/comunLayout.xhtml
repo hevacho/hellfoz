@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+ 
+    <h:head>
+		
+		<!-- CSS's -->
+		<h:outputStylesheet library="css" name="comun.css" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+		
+		<!-- google maps -->
+		<script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=3.4" type="text/javascript"></script>
+		
+	
+		
+    </h:head>
+ 
+    <h:body>
+ 
+	
+ 
+	   
+		<ui:insert name="header" >
+		  <ui:include src="/templates/cabeceraComun.xhtml" />
+		</ui:insert>
+		
+		
+		<ui:insert name="menu" >
+		  <ui:include src="/templates/menuComun.xhtml" />
+		</ui:insert>
+	   
+ 	    <div class="contenido3 centerAndBorder">
+ 	    	  	<ui:insert name="content" >
+			 	  <ui:include src="/templates/contenidoComun.xhtml" />
+			   	</ui:insert>
+	   	</div>
+		
+				
+			    	    
+		<ui:insert name="footer" >
+		    <ui:include src="/templates/pieComun.xhtml" />
+		</ui:insert>
+	    
+    	    
+ 
+    </h:body>
+</html>

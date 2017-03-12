@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+Hola ${nombre} ${apellido1} ${apellido2}: <br/>
+<p>
+Much&iacutesimas gracias por completar el formulario de la zona de acampada. <br/> 
+Esperamos que este a&ntildeo sea incluso mejor que el a&ntildeo pasado y que pod&aacuteis disfrutar este festival tanto como nosotros.
+<p/> 
+
+<br/>
+
+Recibe un cordial saludo de parte del equipo de HELLFOZ
+
+<br/>
+<br/>
+<a href="http://www.hellfoz.com"><img src="cid:hellfozFoto" /><a/>
+&nbsp;&nbsp;
+<a href="https://www.facebook.com/Valhalla-coru%C3%B1a-144117445735187/timeline/"><img src="cid:valhallaFoto" /><a/>
+
+</body>
+</html>

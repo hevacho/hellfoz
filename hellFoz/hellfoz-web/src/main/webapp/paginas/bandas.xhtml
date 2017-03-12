@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+				<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<!-- titulo -->
+			<h:outputText value="#{msg['bandas.titulo']}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+			<!-- EMPIEZAN LAS NOTICIAS -->
+						
+			<!-- mensaje de si no hay bandas seleccionadas -->
+			<h:outputText value="#{msg['bandas.sinBandas']}" rendered="#{empty bandaBean.bandas}" styleClass="separacion20 sinDatos"/>
+			
+			<ui:repeat var="banda" value="#{bandaBean.bandas}">
+			
+				<p:fieldset legend="#{banda.nombre}" style="max-width:90%; margin:0 auto">
+					<p:panelGrid>
+			        	<p:row>
+			        		<p:column>
+			        			<!-- foto -->
+			        			<p:graphicImage value="#{imageStreamer.image}" cache="false" rendered="#{not empty banda.foto}">
+									<f:param name="id" value="#{'band'.concat(banda.foto.idImagen)}" />
+								</p:graphicImage>
+								
+								<!-- sin foto -->
+									<p:outputPanel rendered="#{empty banda.foto}">
+										<img src="#{request.contextPath}/images/sinGrupo.png"/>
+									</p:outputPanel>
+								
+								<h:outputText value=" " rendered="#{empty banda.foto}"/>	
+			        		</p:column>
+			        		
+			        		<p:column>
+			        			<h:outputText value="#{banda.texto}" escape="false" />
+			        			&nbsp;&nbsp;&nbsp;
+			        			<p:link href="#{banda.url}" value="#{msg['unaNoticia.irAlSitio']}" rendered="#{not empty banda.url}" target="_blank" styleClass="oscuro"/>
+			        		</p:column>
+			        		
+			        	</p:row>
+			        </p:panelGrid>
+			    </p:fieldset>
+				
+				
+				<div class="clear">
+					&nbsp;
+				</div>
+			
+			
+			</ui:repeat>
+				
+			
+			
+		</h:form>
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

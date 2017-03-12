@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+        http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+ 	
+  <!-- DataSource -->	
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">				
+		<property name="jndiName">
+		    <value>jdbc/MySQLDS</value>           
+        </property>
+        <property name="resourceRef" value="true" />
+	</bean>	
+ 	
+ <!-- EntityManagerFactory -->
+  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+  	<property name="persistenceXmlLocation" value="classpath:/persistence.xml" />
+    <property name="persistenceUnitName" value="persistenceUnit"/>
+    <property name="dataSource" ref="dataSource"/>
+    <property name="packagesToScan" value="hellfoz.model.entities.*" />
+  </bean>
+ 
+ <!-- Transaction Manager -->
+  <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
+<!-- Enable @Transactional annotation -->
+  <tx:annotation-driven/>
+
+ 	
+
+</beans>

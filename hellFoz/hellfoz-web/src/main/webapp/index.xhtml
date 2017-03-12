@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="/layouts/comunLayoutJs.xhtml">
+	<ui:define name="content">
+		<h:form id="form2">
+
+
+				<!-- Carrusel de imagenes Switch -->
+				<div id="imageSwitch">
+					<p:imageSwitch effect="fade" styleClass="imagenInicio">
+						<ui:repeat value="#{inicioBean.images}" var="image">
+							<p:graphicImage value="#{imageStreamer.image}" cache="false"
+								styleClass="imagenInicio">
+								<f:param name="id" value="#{image}" />
+							</p:graphicImage>
+	
+						</ui:repeat>
+					</p:imageSwitch>
+				</div>
+			
+			
+			
+			
+			<div class="clear">&nbsp;</div>
+			
+			<div style="width:100%; padding-top:20px; float: left" >
+				
+					<p:outputPanel delay="5000">
+					<div class="clear">&nbsp;</div>
+					<!-- youtube ojo con las urls porque hay que formatearlas-->
+					<div class="floatRight separacionCajasInicio" id="divYoutube">
+						<p:media id="youtube" value="https://www.youtube.com/v/RXd_gNDIzZA" width="300"
+							height="260" player="flash" />
+		
+					</div>
+		
+		
+					<!-- Eventos -->
+					<div class="flotaLeft separacionCajasInicio">
+						<p:dataList value="#{inicioBean.eventos}" var="evento" type="unordered" itemType="none" paginator="true" rows="7" styleClass="paginated">
+							<f:facet name="header">
+				            	#{msg['inicio.eventos']}
+					        </f:facet>
+							<p:commandLink update=":form2:eventoDetalle"	oncomplete="PF('eventoDialog').show()" title="#{msg['inicio.detallesEvento']}"	styleClass="ui-icon ui-icon-search"	style="float:left;margin-right:10px" disabled="#{empty evento.titulo}">
+								<f:setPropertyActionListener value="#{evento}"	target="#{inicioBean.eventoSeleccionado}" />
+							</p:commandLink>
+		
+							<h:outputText value="#{evento.titulo}" style="display:inline-block" rendered="#{not empty evento.titulo}" escape="false" />
+							&nbsp;
+							<h:outputText value=" #{evento.ciudad}" styleClass="textoCiudad" rendered="#{not empty evento.titulo}" />
+							&nbsp;
+							<h:outputText value=" #{evento.fechaEvento}" style="display:inline-block" rendered="#{not empty evento.titulo}" />
+							<h:outputText value="" style="display:inline-block"	rendered="#{empty evento.titulo}" />
+						</p:dataList>
+					</div>
+		
+					
+					<div class="clear">&nbsp;</div>
+		
+					<p:dialog header="#{msg['inicio.detallesEvento']}" widgetVar="eventoDialog" modal="true" showEffect="drop" hideEffect="puff" resizable="false" width="60%">
+						<p:outputPanel id="eventoDetalle" style="text-align:left;">
+							<h:outputText value="#{inicioBean.eventoSeleccionado.texto}" rendered="#{not empty inicioBean.eventoSeleccionado}" escape="false"/>
+						</p:outputPanel>
+					</p:dialog>
+	
+					</p:outputPanel>
+	
+			
+		</div>
+	</h:form>
+	
+	<div class="clear">&nbsp;</div>
+	
+	</ui:define>
+</ui:composition>
+
+</html>

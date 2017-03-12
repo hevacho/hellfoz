@@ -1,0 +1,375 @@
+
+body {
+	background: url("../images/fondo.jpg") repeat;
+	max-width: 100%;
+ 	height: auto;
+ 	font-family: Oswald, arial, times, Times New Roman, times-roman, georgia, serif;
+	font-weight: normal;
+	
+	
+}
+
+.imagenInicio{
+ max-width:100%;
+ min-width:100%;
+ height: auto;
+ position:relative; 
+}
+
+
+
+/* unvisited link */
+a:link {
+    color: #900000;
+    font-family: Oswald;
+	font-weight: bold;
+	text-decoration:none;
+	filter:none\0 !important;
+	
+}
+
+
+a:hover {
+    text-decoration:underline;
+    filter:none\0 !important;
+}
+
+a.sinUnderline {
+	text-decoration: none;
+	color:transparent !important;
+}
+
+a.oscuro{
+	color: #480000;
+}
+
+/* selected link */
+a:active {
+   color: #900000;
+    font-family: Oswald;
+	font-weight: bold;
+	text-decoration:none;
+	text-decoration:underline;
+	filter:none\0 !important;
+}
+
+a:visited {
+   color: #900000;
+    font-family: Oswald;
+	font-weight: bold;
+	text-decoration:none;
+	text-decoration:underline;
+	filter:none\0 !important;
+}
+
+
+
+
+/*barra Menu*/
+a.ui-menuitem-link{
+	color: white  ;
+	font-family: Oswald;
+	font-weight: bold !important;
+	background: none !important;
+	filter:none\0;
+	
+}
+
+/*barra al pasar por encima*/
+a.ui-menuitem-link:hover{
+	color: red;
+	font-family: Oswald;
+	font-weight: bold !important;
+	background: #180000 !important;
+	filter:none\0;
+	
+}
+
+.ui-menu {
+    background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #900000, #380000) repeat scroll 0 0;
+    border: 1px solid #262626;
+    color: #dddddd;
+    background-color:#380000\0 ;
+	filter:none\0;
+}
+
+/*menu saliente de la barra*/
+.ui-menu-child{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #900000, #380000) repeat scroll 0 0;
+    border: 1px solid #262626;
+    color: #dddddd;
+    background-color:#380000\0;
+    filter:none\0;
+}
+
+/* cabeceras de los widgets*/
+.ui-widget-header {
+    background: rgba(0, 0, 0, 0) linear-gradient(#900000 , #380000) repeat scroll 0 0;
+    border: 1px solid #3c443c;
+    color: #F8F8F8;
+    font-weight: bold;
+    font-family: Oswald;
+    font-size:15px;
+	outline: 0 none;
+	background-color:#380000\0 ;
+	filter:none\0;
+	
+}
+
+/*botones*/
+.ui-button{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #900000, #380000) repeat scroll 0 0;
+	color: #dddddd;
+	background-color:#380000\0 ;
+	filter:none\0;
+}
+
+.ui-button:hover{
+	color: red;
+	background: #180000 !important;
+	filter:none\0;
+}
+
+/*leyendas del fieldset*/
+.ui-fieldset-legend{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #900000, #380000) repeat scroll 0 0;
+	color: #dddddd;
+	background-color:#380000\0 ;
+	filter:none\0;
+}
+
+
+
+.ui-corner-left.ui-state-active {
+	color: red !important;
+	background: #180000 !important;
+	filter:none\0;
+	
+}
+
+.ui-state-default.ui-corner-left{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #900000, #380000) repeat scroll 0 0;
+	color: #dddddd;
+	background-color:#380000\0 ;
+	filter:none\0;
+}
+
+.ui-state-default.ui-corner-left.ui-state-hover{
+	color: red !important;
+	background: #180000 !important;
+	filter:none\0;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+	color: red !important;
+	filter:none\0;
+}
+
+.ui-state-hover a, .ui-state-hover a:hover
+{
+	color: red !important;
+	filter:none\0;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+   	color: red !important;
+	background: #180000 !important;
+    box-shadow: none;
+    color: #eeffee;
+    outline: 0 none;
+}
+
+.ui-state-default, .ui-widget-content.ui-state-default, .ui-widget-header.ui-state-default {
+    background: rgba(0, 0, 0, 0) linear-gradient(#900000, #380000) repeat scroll 0 0;
+    border: 1px solid #262626;
+    color: #dddddd;
+    font-weight: bold;
+    outline: 0 none;
+}
+
+
+
+
+.centerAndBorder{
+	width: 80%; 
+	margin: 0 auto;
+}
+
+div.clear {
+    clear:both;
+    width: 100%;
+}
+
+.floatLeft{
+	float:left;
+}
+
+.floatRight{
+	float:right;
+}
+
+
+.separaccionDerecha45{
+	float:rigth; padding-left: 45px;
+}
+
+.separacionSuperior{
+	padding-top:10px;
+}
+
+.separacionSuperior13{
+	padding-top:13px;
+}
+
+.tituloPaginas{
+	color: #900000;
+    font-family: Trebuchet MS;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px 10px 0px 20px;
+    text-transform: uppercase;
+}
+
+
+.separadorBarraTituloPequ{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #FFFFFF, #900000) repeat scroll 0 0;
+	margin: 10px 10px;
+	display: block;
+	width:98%;
+    height: 7px;
+    background-color:#900000\0;
+    filter:none\0;
+}
+
+.tituloNoticias{
+	text-transform: uppercase;
+	font-family: Trebuchet MS;
+	font-size: 20px;
+	font-weight: bold;
+	color:#000000;
+}
+
+.textoNegrita{
+	color:white;
+	font-weight: bold;
+    font-family: Oswald;
+	font-size: 25px;
+}
+
+.cajaNegraPeq{
+	width: 250px;
+	height: 100px;
+	background-color: #3E3E3E;
+	margin-top:30px;
+	padding-top:10px;
+	text-align: center;
+	border-radius: 25px;
+}
+
+.contenido{
+	background: rgba(0, 0, 0, 0) radial-gradient(circle at 50% 75% , #676767, #343434) repeat scroll 0 0;
+	min-height: 800px;
+	background-color:#343434\0;
+	filter:none\0;
+	
+}
+
+.contenido3{
+	background: rgba(255, 255, 255, 0.8) repeat scroll 0 0;
+	min-height: 800px;
+}
+
+.contenido2{
+	background-color: #3E3E3E;
+	min-height: 100px;
+	margin-top: 20px;
+}
+
+.separacionCajasInicio{
+	width: 40%; 
+	padding:10px;
+}
+
+.textoCiudad{
+	color:#F8F8F8;
+	font-family: Oswald, arial, times, Times New Roman, times-roman, georgia, serif;
+	font-weight: bold;
+	display:inline-block
+}
+
+.tituloTransportes{
+	color:#900000;
+	font-family: Oswald, arial, times, Times New Roman, times-roman, georgia, serif;
+	font-weight: bold;
+	font-size:20px;
+	display:inline-block
+}
+
+
+
+.barra{
+	width: 95%;
+	border-top: 1px solid #333333; 
+	margin: 0 auto;
+}
+
+.introduccion{
+	float:left;
+	padding:20px 0px 0px 10px;
+	max-width: 60%;
+}
+
+.centerButton{
+	width: 30%;
+	margin: 0 auto;
+}
+
+.imagenNoticia{
+ 	border: 5px solid white;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.separacion20 {
+	padding: 20px;
+}
+
+.sinDatos{
+	font-family: Trebuchet MS;
+	font-size: 20px;
+	font-weight: bold;
+	color:#000000;
+}
+
+a.linkFondoOscuro{
+	color: #FFFFFF !important;
+	filter:none\0 !important;
+}
+
+.documentoHorarios{
+	width: 80%; 
+	margin:0 auto; 
+	display: block;
+}
+
+.center{
+	width: 90%;
+	margin:0 auto;
+}
+
+.centrado{
+	margin:0 auto;
+	display:block;
+}
+
+.sponsor{
+	color:white; 
+	padding:5px
+}
+
+.sponsorFoto{
+	margin:0 auto; 
+	width: 25%
+}

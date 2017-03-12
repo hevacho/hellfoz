@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+ 
+    <h:head>
+		
+		<!-- CSS's -->
+		<h:outputStylesheet library="css" name="comun.css" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js"/>	
+		
+		<script type="text/javascript">
+		
+		$(window).bind('resize',function(){
+			
+			window.location.href = window.location.href;
+		    
+		});
+		
+		//arreglo para sobrecargar el imageSwitch y que salga con posicion relativa
+		$( document ).ready(function() {
+			
+			var pixelsAncho = $(window).width();
+			
+			var pixelsAltoFotoCalulado = 100;
+			
+			if(pixelsAncho>1900){
+				pixelsAltoFotoCalulado=650;
+			} else if(pixelsAncho>1500){
+				pixelsAltoFotoCalulado=550;
+			} else if(pixelsAncho>1400){
+				pixelsAltoFotoCalulado=450;
+			}else if(pixelsAncho>1300){
+				pixelsAltoFotoCalulado=400;
+			}else if(pixelsAncho>1200){
+				pixelsAltoFotoCalulado=420;
+			}else{
+				pixelsAltoFotoCalulado=360;
+			}
+			
+			var pixelsAnchoFoto = Math.floor(pixelsAncho/1);
+			
+			
+			$('#imageSwitch').css({"min-height": pixelsAltoFotoCalulado+"px"});			
+		});
+		
+		
+				
+		
+		</script>
+		
+    </h:head>
+ 
+    <h:body>
+ 
+	
+ 
+	   
+		<ui:insert name="header" >
+		  <ui:include src="/templates/cabeceraComun.xhtml" />
+		</ui:insert>
+		
+		
+		<ui:insert name="menu" >
+		  <ui:include src="/templates/menuComun.xhtml" />
+		</ui:insert>
+	   
+ 	    <div class="contenido centerAndBorder">
+ 	    	  	<ui:insert name="content" >
+			 	  <ui:include src="/templates/contenidoComun.xhtml" />
+			   	</ui:insert>
+	   	</div>
+		
+				
+			    	    
+		<ui:insert name="footer" >
+		    <ui:include src="/templates/pieComun.xhtml" />
+		</ui:insert>
+	    
+    	    
+ 
+    </h:body>
+</html>

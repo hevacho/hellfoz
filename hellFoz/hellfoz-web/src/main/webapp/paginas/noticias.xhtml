@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+				<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+		
+			<!-- titulo -->
+			<h:outputText value="#{msg['noticias.titulo']}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+			<!-- EMPIEZAN LAS NOTICIAS -->
+						
+			<!-- mensaje de si no hay noticias -->
+			<h:outputText value="#{msg['noticias.sinNoticias']}" rendered="#{empty noticiaBean.noticiasPagina.noticias and noticiaBean.noticiasPagina.total==0}" styleClass="separacion20"/>
+			
+			<!-- iteracion de noticias -->
+			<ui:repeat var="noticia" value="#{noticiaBean.noticiasPagina.noticias}" >
+				
+				<div class="floatLeft">
+				
+					<!-- imagen no disponible o la real de BD -->
+					<div class="floatLeft separacionSuperior" style="padding:10px">
+						<p:outputPanel rendered="#{empty noticia.fotoPeq}">
+							<img src="#{request.contextPath}/images/imagenNodisponible.png"/>
+						</p:outputPanel>
+						
+						<p:graphicImage value="#{imageStreamer.image}" cache="false" rendered="#{not empty noticia.fotoPeq}">
+								<f:param name="id" value="#{'peq'.concat(noticia.fotoPeq.idImagen)}" />
+						</p:graphicImage>	
+						
+					</div>
+				
+					<!-- Introduccion -->
+					<div class="introduccion">
+						<h:outputText value="#{noticia.titulo}" styleClass="tituloNoticias"/>
+						<br/><br/>
+						<h:outputText value="#{noticia.fecha}"/>
+						<br/><br/>
+						<h:outputText value="#{noticia.textoPeq}"/>
+						<h:commandLink value="#{msg['noticias.leerMas']}" actionListener="#{noticiaBean.leerMas(noticia.idNoticia)}"/>
+					</div>
+				</div>
+				
+				<div class="clear">&nbsp;</div>
+				
+				<!-- barra separacion -->		
+				<div class="barra">
+						&nbsp;
+				</div>
+			</ui:repeat>
+			
+			<div class="clear">&nbsp;</div>
+			
+			<div class="centerButton">
+				<div class="flotaLeft">
+					<p:commandButton value="#{msg['noticias.anterior']}" actionListener="#{noticiaBean.anterior()}" disabled="#{noticiaBean.hayAnterior() == false}" update=":form"/>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<p:commandButton value="#{msg['noticias.siguiente']}" actionListener="#{noticiaBean.siguiente()}"  disabled="#{noticiaBean.haySiguiente() == false}" update=":form"/>
+				</div>
+			</div>
+			
+			
+		</h:form>
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	>
+
+
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+			<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<!-- titulo -->
+			<p:outputLabel value="#{(msg['acampada.titulo'])}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+				<p:gmap center="#{acampadaBean.mapa.coordenadas}" zoom="#{acampadaBean.mapa.zoom}" type="HYBRID" style="width:90%;height:500px; margin:0 auto" model="#{acampadaBean.simpleModel}"/>
+				
+				<div class="clear">&nbsp;</div>
+				
+				<div class="center textoNormal">
+					
+					<h:outputText value="#{msg['acampada.introduccion']}" escape="false"/>
+					<div class="clear">&nbsp;</div>
+					<div class="clear">&nbsp;</div>
+					
+					<h:outputText value="#{msg['acampada.introduccionFotos']}" escape="false"/>
+					<div class="clear">&nbsp;</div>
+					
+					<!-- carrusel de fotos -->
+					<p:imageSwitch effect="shuffle" style="margin: 0 auto;">
+    					<ui:repeat value="#{acampadaBean.images}" var="image">
+    					<img src="#{request.contextPath}/images/#{image}" /> 
+    					</ui:repeat>
+					</p:imageSwitch>
+				</div>
+			
+				<div class="clear">&nbsp;</div>
+				<div class="clear">&nbsp;</div>
+				
+				<div class="center textoNormal">
+				
+					<h:outputText value="#{msg['acampada.introFormularioAcampada']}" escape="false"/>
+					&nbsp;&nbsp;
+					<p:commandButton value="#{msg['acampada.formularioAcampada']}" type="button" onclick="PF('captchaDlgWar').show();" />
+				
+				</div>
+				
+			</h:form>
+		
+		
+		<!-- Dialog para rellenar el formulario de acampada -->	
+		<h:form id="formulario">	
+			<p:dialog widgetVar="captchaDlgWar" modal="true" resizable="false"
+	              header="#{msg['acampada.formularioAcampada']}" >
+	        	
+	        	<h:panelGrid columns="1">
+	        		<p:messages id="msg"/>
+	        	</h:panelGrid>
+	        	
+	        	<h:panelGrid id="panelDatos" columns="2">
+	        	 <h:outputLabel value="#{(msg['acampada.nombre']).toString().concat(': *')}"/>
+	        	 <p:inputText value="#{acampadaBean.datosAcampada.nombre}" maxlength="50" required="true" requiredMessage="#{msg['acampada.nombreObligatorio']}"/>
+	        	 
+	        	 <h:outputLabel value="#{(msg['acampada.apellido1']).toString().concat(': *')}"/>
+	        	 <p:inputText value="#{acampadaBean.datosAcampada.apellido1}" maxlength="50" required="true" requiredMessage="#{msg['acampada.apellido1Obligatorio']}"/>	
+	        	 
+	        	 <h:outputLabel value="#{(msg['acampada.apellido2']).toString().concat(': *')}"/>
+	        	 <p:inputText value="#{acampadaBean.datosAcampada.apellido2}" maxlength="50" required="true" requiredMessage="#{msg['acampada.apellido2Obligatorio']}"/>
+	        	 
+	        	 <h:outputLabel value="#{(msg['acampada.email']).toString().concat(': *')}"/>
+	        	 <p:inputText value="#{acampadaBean.datosAcampada.email}" maxlength="50" required="true" requiredMessage="#{msg['acampada.emailObligatorio']}" validator="custom.emailValidator" validatorMessage="#{msg['acampada.emailNoCorrecto']}"/>
+	        	 
+	        	 <h:outputLabel value="#{(msg['acampada.numeroPersonas']).toString().concat(': *')}"/>
+	        	 <p:spinner value="#{acampadaBean.datosAcampada.numeroPersonas}" min="1" max="100"/>
+	        	
+	        	</h:panelGrid>
+	        	
+	        
+	        	<div class="clear">&nbsp;</div>
+
+				<div style="float: left; margin: 0 0 0 30px;">				
+				<p:captcha label="Captcha" id="captchaId" language="es"
+						theme="white" required="true"
+						requiredMessage="#{msg['acampada.requerido']}"
+						validatorMessage="#{msg['acampada.captchaIncorrecta']}"/>
+				</div>
+
+				<div class="clear">&nbsp;</div>
+				
+				
+	            <p:commandButton id="btnContinue" ajax="true" value="Continue"
+	                 actionListener="#{acampadaBean.onButtonAction}" update="msg panelDatos @widgetVar('captchaDlgWar')" 
+	            	 oncomplete="Recaptcha.reload();" style="margin:0 auto; display:block"/>
+	            
+	    </p:dialog>
+    </h:form>
+			
+			
+			
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

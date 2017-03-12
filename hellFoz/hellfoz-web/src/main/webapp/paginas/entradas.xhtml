@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	>
+
+
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+			<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<!-- titulo -->
+			<p:outputLabel value="#{(msg['entradas.titulo'])}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+			
+				
+			  	<p:wizard flowListener="#{entradasWizardBean.onFlowProcess}" style="max-width:90%; margin:0 auto">
+			        <p:tab id="entradas" title="#{(msg['entradas.numero'])}">
+			            <p:panel >
+			                <p:messages />
+			                
+			                <h:outputText value="#{msg['entradas.introEntradas']}" escape="false"/>
+			                
+			                <h:panelGrid columns="2" columnClasses="label, value">
+			                  
+			                    <h:outputText value="#{(msg['entradas.precio']).toString().concat(': ').concat(entradasWizardBean.precio)}" />
+			                    <br/>
+			                    <h:outputText value="#{(msg['entradas.numeroSeleccionar']).toString().concat(': *')}" />
+			                    <p:spinner id="minMax" value="#{entradasWizardBean.numeroEntradas}" min="1" max="5">
+			                    </p:spinner>
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:tab>
+			        
+			        <p:tab id="direcciones" title="#{(msg['entradas.personas'])}">
+			            <p:panel>
+			                <p:messages />
+			                
+			                <ui:repeat var="personaEntrada" value="#{entradasWizardBean.personasEntradas}">
+			                	<h:panelGrid columns="2" columnClasses="label, value">
+				                    <h:outputText value="#{(msg['entradas.nombre']).toString().concat(': *')}"/>
+				                    <p:inputText value="#{personaEntrada.nombre}" required="true" requiredMessage="#{msg['entradas.nombreObligatorio']}" maxlength="50"/>
+				                    <h:outputText value="#{(msg['entradas.apellidos']).toString().concat(': *')}" />
+				                    <p:inputText value="#{personaEntrada.apellidos}" required="true" requiredMessage="#{msg['entradas.apellidoObligatorio']}" maxlength="150"/>
+				                    <h:outputText value="#{(msg['entradas.nif']).toString().concat(': *')}" />
+				                    <p:inputText value="#{personaEntrada.nif}" required="true" requiredMessage="#{msg['entradas.nifObligatorio']}" validator="custom.dniValidator" validatorMessage="#{msg['entrada.dniIncorrecto']}" maxlength="9"/>
+				                    <h:outputText value="#{(msg['entradas.email']).toString().concat(': *')}" />
+				                    <p:inputText value="#{personaEntrada.email}" required="true" requiredMessage="#{msg['entradas.emailObligatorio']}" validator="custom.emailValidator" validatorMessage="#{msg['entrada.emailNoCorrecto']}" maxlength="50"/>
+				                    <br/>
+			                    
+			                	</h:panelGrid>
+			                	
+			                </ui:repeat>
+			                
+			            </p:panel>
+			        </p:tab>
+			        
+			        <p:tab id="datosTarjeta" title="#{(msg['entradas.datosTarjeta'])}">
+			            <p:panel >
+			                <p:messages id="messa"/>
+			                
+			                ESTA ES UNA DEMO DEL PROGRAMA Y NO SE RECOMIENDA INTRODUCIR DATOS BANCARIOS REALES PORQUE LA APLICACION NO ESTA SECURIZADA <br/>
+			                PARA UNA DEMOSTRACION INTRODUCIR LOS SIGUIENTES DATOS: <br/>
+			                <ul>
+			                	<li>tipo: mastercard</li>
+			                	<li>nombre: Joe</li>
+			                	<li>apellidos: Shopper</li>
+			                	<li>numeroTarjeta: 5500005555555559</li>
+			                	<li>cvv: 111</li>
+			                	<li>ano: 2020</li>
+			                	<li>mes: 2</li>
+			                </ul>
+			                
+			                <br/><br/>
+			                
+			                
+			                <h:panelGrid columns="2" columnClasses="label, value">
+				                <h:outputLabel value="#{(msg['entradas.tipoTarjeta']).toString().concat(': *')}" />
+	        					<p:selectOneRadio id="console" value="#{entradasWizardBean.tarjeta.tipoTarjeta}" required="true"  requiredMessage="#{msg['entradas.tipoTarjetaObligatorio']}">
+	            					<f:selectItem itemLabel="Visa" itemValue="visa" />
+	            					<f:selectItem itemLabel="MasterCard" itemValue="mastercard" />
+						        </p:selectOneRadio>  
+						        
+						        <h:outputText value="#{(msg['entradas.nombre']).toString().concat(': *')}" />
+						        <p:inputText value="#{entradasWizardBean.tarjeta.nombre}"  required="true" requiredMessage="#{msg['entradas.nombreObligatorio']}"/>
+						        
+						        <h:outputText value="#{(msg['entradas.apellidos']).toString().concat(': *')}" />
+						        <p:inputText value="#{entradasWizardBean.tarjeta.apellidos}" required="true" requiredMessage="#{msg['entradas.apellidoObligatorio']}"/>
+						        
+						        <h:outputText value="#{(msg['entradas.numeroTarjeta']).toString().concat(': *')}" />
+						        <p:inputText value="#{entradasWizardBean.tarjeta.numero}"  required="true" requiredMessage="#{msg['entradas.numeroTarjetaObligatorio']}"/>
+						        
+						        <h:outputText value="#{(msg['entradas.cvv']).toString().concat(': *')}" />
+						        <p:inputText value="#{entradasWizardBean.tarjeta.cvv}"  required="true" requiredMessage="#{msg['entradas.cvvObligatorio']}"/>
+						        
+						        <h:outputText value="#{(msg['entradas.ano']).toString().concat(': *')}" />
+						        <p:spinner id="ano" value="#{entradasWizardBean.tarjeta.anhoExpiracion}" min="2016" max="2055" required="true" requiredMessage="#{msg['entradas.anhoExpiracionObligatorio']}"/>
+						        
+						        <h:outputText value="#{(msg['entradas.mes']).toString().concat(': *')}" />
+						        <p:spinner id="mes" value="#{entradasWizardBean.tarjeta.mesExpiracion}" min="1" max="12" required="true" requiredMessage="#{msg['entradas.mesExpiracionObligatorio']}"/>
+						        
+					        </h:panelGrid>
+				        </p:panel>
+			        </p:tab>
+			 		
+			 		<p:tab id="confirmacionDatos" title="#{(msg['entradas.numero'])}">
+			            <p:panel >
+			                <p:messages />
+			                <h:panelGrid columns="2" columnClasses="label, value">
+			                    <h:outputText value="#{(msg['entradas.total'])}" />
+			                    <h:outputText value="#{entradasWizardBean.precioTotal}"/>
+			                      
+			                </h:panelGrid>   
+			                    <br/><br/>
+			                    
+			                <ui:repeat var="personaEntrada" value="#{entradasWizardBean.personasEntradas}">
+			                	<h:panelGrid columns="2" columnClasses="label, value">
+				                    <h:outputText value="#{(msg['entradas.nombre']).toString().concat(': ')}"/>
+				                    <h:inputText value="#{personaEntrada.nombre}" readonly="true"/>
+				                    <h:outputText value="#{(msg['entradas.apellidos']).toString().concat(': ')}" />
+				                    <h:inputText value="#{personaEntrada.apellidos}" readonly="true"/>
+				                    <h:outputText value="#{(msg['entradas.nif']).toString().concat(': ')}" />
+				                    <h:inputText value="#{personaEntrada.nif}" readonly="true"/>
+				                    <h:outputText value="#{(msg['entradas.email']).toString().concat(': ')}" />
+				                    <h:inputText value="#{personaEntrada.email}" readonly="true"/>
+				                    <br/>
+			                    
+			                	</h:panelGrid>
+			                </ui:repeat>
+			                
+			                <div class="clear">&nbsp;</div>
+			                
+						     <p:commandButton value="#{msg['entradas.realizarCompra']}" actionListener="#{entradasWizardBean.save}" update="messa" process="@this" onstart="PF('statusDialog').show();" oncomplete="PF('statusDialog').hide();"/>
+			                
+			                
+							<p:dialog modal="true" widgetVar="statusDialog" header="#{msg['entradas.realizandoCompra']}"   
+							          draggable="false" closable="false">  
+							   <img src="#{request.contextPath}/images/heavy-metal.gif" /> 
+							</p:dialog>
+			                
+			            </p:panel>
+			        </p:tab>
+			 			
+			        
+		      	</p:wizard>
+				
+			</h:form>
+		
+		
+			
+			
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>

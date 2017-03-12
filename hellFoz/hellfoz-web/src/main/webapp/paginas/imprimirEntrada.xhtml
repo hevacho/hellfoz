@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	>
+
+
+
+<ui:composition template="/layouts/comunLayout.xhtml">
+	<ui:define name="content">
+		
+		
+			
+			<!-- separacion linea -->
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<!-- titulo -->
+			<p:outputLabel value="#{(msg['entradas.titulo'])}" styleClass="tituloPaginas"/>
+			
+			<div class=" floatLeft separadorBarraTituloPequ">&nbsp;</div>
+			
+			
+			<div class="clear">
+				<br/>
+			</div>
+			
+			<h:form id="form">
+				
+				 <h:outputText value="#{msg['imprimirEntradas.sinEntradas']}" rendered="#{empty imprimirEntradasBean.fichero}" styleClass="separacion20 sinDatos"/>
+				
+				<div class="documentoHorarios">	
+					<pe:documentViewer value="#{ficheroStreamer.content}" height="800" rendered="#{not empty imprimirEntradasBean.fichero}"/>
+				</div>
+			
+				<p:dialog modal="true" widgetVar="statusDialog" header="#{msg['entradas.realizandoCompra']}"   
+								          draggable="false" closable="false">  
+				   <img src="#{request.contextPath}/images/heavy-metal.gif" /> 
+				</p:dialog>
+			  
+			</h:form>
+		
+		
+			
+			
+
+		<div class="clear">&nbsp;</div>
+	</ui:define>
+</ui:composition>
+
+</html>
